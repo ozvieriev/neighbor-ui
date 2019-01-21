@@ -1,0 +1,27 @@
+<div class="mb-3">
+    <h6>Account
+        <span ng-account-type="model.account.status"></span>
+        <span ng-account-activated="model.account.status"></span></h6>
+
+    <div class="input-group input-group-sm mb-1">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Email *</span>
+        </div>
+        <input type="email" class="form-control" data-ng-model="model.account.email" placeholder="Email..." style="background-color: white"
+            readonly>
+    </div>
+    <div class="input-group input-group-sm mb-1">
+        <div class="input-group-prepend">
+            <span class="input-group-text">First name *</span>
+        </div>
+        <input type="text" class="form-control" data-ng-model="model.account.firstName" placeholder="First name..."
+            style="background-color: white" readonly>
+    </div>
+    <div class="input-group input-group-sm mb-1">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Last name *</span>
+        </div>
+        <input type="text" class="form-control" data-ng-model="model.account.lastName" placeholder="Last name..." style="background-color: white"
+            readonly>
+    </div>
+</div>

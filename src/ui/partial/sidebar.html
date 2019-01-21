@@ -1,0 +1,40 @@
+<div data-ng-sidebar>
+    <nav class="navbar navbar-light pt-0 pl-0">
+        <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <nav class="navbar navbar-light pt-0 pl-0">
+                <button class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <div data-ng-hide="$auth.isAuthenticated()">
+                <a ui-sref="user/sign-in" class="btn btn-primary btn-sm">Sign in</button>
+            </div>
+            <div data-ng-show="$auth.isAuthenticated()">
+                <div class="card">
+                    <div class="card-header">
+                        Customer search
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Filter:</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Filter..."
+                                data-ng-model="model.search.filter">
+                        </div>
+                        <div class="form-group">
+                            <label>Global order:</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Global order..."
+                                data-ng-model="model.search.globalOrderId">
+                        </div>
+                        <button class="btn btn-primary btn-sm" type="submit">Search</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm" data-ng-click="$auth.logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
