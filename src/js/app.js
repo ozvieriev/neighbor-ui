@@ -34,11 +34,11 @@ angular.module('app', ['ui.router',
                 header: {
                     templateUrl: 'partial/header.html'
                 },
+                main: {
+                    controller: 'appController',
+                },
                 footer: {
                     templateUrl: 'partial/footer.html'
-                },
-                content: {
-                    controller: 'appController',
                 }
             }
         });
