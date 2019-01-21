@@ -64,6 +64,7 @@ angular.module('app', ['ui.router',
             $stateProvider.state(json.name, state);
         };
 
+        _state({ url: 'account/sign-in', controller: 'accountSignIn' });
         _state({ url: 'account/sign-up', controller: 'accountSignUp' });
 
         _state({ url: 'about' });
