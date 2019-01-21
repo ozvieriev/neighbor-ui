@@ -9,8 +9,8 @@ angular.module('app.auth')
 
                 config.headers = config.headers || {};
 
-                  if ($auth.isAuthenticated())
-                      config.headers.Authorization = 'bearer ' + $auth.getAccessToken();
+                //   if ($auth.isAuthenticated())
+                //       config.headers.Authorization = 'bearer ' + $auth.getAccessToken();
 
                 return config;
             };

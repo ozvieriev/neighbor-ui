@@ -1,53 +1,40 @@
 <!DOCTYPE html>
-<html style="height: auto; min-height: 100%;overflow: auto">
+<html style="height: auto; min-height: 100%;overflow: auto" data-ng-app="app">
 
 <head>
-    <base href="/">
+  <base href="/">
 
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zendeskgarden/css-bedrock@7.0" type="text/css">
+  <link rel="stylesheet" href="css/vendor.min.css" />
+  <link rel="stylesheet" href="css/app.min.css" />
 
-    <link rel="stylesheet" href="css/vendor.min.css" />
-    <link rel="stylesheet" href="css/app.min.css" />
+  <style type="text/css">
+    [ng-cloak],
+    [data-ng-cloak] {
+      visibility: hidden !important;
+    }
 
-    <style type="text/css">
-        [ng-cloak],
-        [data-ng-cloak] {
-            visibility: hidden !important;
-        }
+    .ng-hide {
+      display: none !important;
+    }
 
-        .ng-hide {
-            display: none !important;
-        }
+    .ng-show {
+      display: block !important;
+    }
+  </style>
 
-        .ng-show {
-            display: block !important;
-        }
-    </style>
-
-    <title></title>
+  <title></title>
 </head>
 
-<body data-ng-app="app" data-ng-cloak>
-    <div data-ui-view="sidebar"></div>
-    <div data-ui-view="content"></div>
+<body data-ng-cloak>
+  <header data-ui-view="header"></header>
+  <main data-ui-view="content" role="main" class="mt-5"></main>
+  <div data-ui-view="footer"></div>
 
-    <!-- 
-    <nav class="navbar navbar-expand-lg navbar-light">
-       
-    </nav>
-
-    <nav class="navbar mb-2 p-0" data-ng-if="$auth.isAuthenticated()" data-ng-click="$auth.logout()">
-        <button type="button" class="btn btn-primary btn-sm ml-auto">Logout</button>
-    </nav> -->
-
-
-
-    <script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
-    <script src="js/vendor.min.js"></script>
-    <script src="js/app.min.js"></script>
+  <script src="js/vendor.min.js"></script>
+  <script src="js/app.min.js"></script>
 </body>
 
 </html>

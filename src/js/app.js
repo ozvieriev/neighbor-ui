@@ -12,8 +12,8 @@ angular.module('app', ['ui.router',
 
         $transitions.onBefore({ to: '**' }, (transitions) => {
 
-            if (transitions.to().isProtected && !$auth.isAuthenticated())
-                return transitions.router.stateService.target('user/sign-in');
+            // if (transitions.to().isProtected && !$auth.isAuthenticated())
+            //     return transitions.router.stateService.target('user/sign-in');
         });
     })
     .config(($stateProvider, $urlRouterProvider) => {
@@ -31,9 +31,11 @@ angular.module('app', ['ui.router',
             restricted: false,
             abstract: true,
             views: {
-                sidebar: {
-                    controller: 'partialSidebarController',
-                    templateUrl: 'partial/sidebar.html',
+                header: {
+                    templateUrl: 'partial/header.html'
+                },
+                footer: {
+                    templateUrl: 'partial/footer.html'
                 },
                 content: {
                     controller: 'appController',
@@ -53,37 +55,44 @@ angular.module('app', ['ui.router',
                 url: `/${json.url}`,
                 params: json.params,
                 templateUrl: json.templateUrl,
-                controller: `${json.controller}Controller`,
                 isProtected: json.isProtected
             };
+
+            if (json.controller)
+                state.controller = `${json.controller}Controller`;
 
             $stateProvider.state(json.name, state);
         };
 
+        _state({ url: 'about' });
+        _state({ url: 'contact-us' });
+        _state({ url: 'disclaimer' });
         _state({ url: 'index', controller: 'index' });
+        _state({ url: 'privacy' });
+        _state({ url: 'resources' });
 
-        _state({
-            url: 'account', controller: 'account', templateUrl: 'views/account/index.html',
-            params: { accountId: null }, isProtected: true
-        });
+        // _state({
+        //     url: 'account', controller: 'account', templateUrl: 'views/account/index.html',
+        //     params: { accountId: null }, isProtected: true
+        // });
 
-        _state({
-            url: 'account/email-is-empty', controller: 'accountEmailIsEmpty',
-            params: { email: null }, isProtected: true
-        });
-        _state({
-            url: 'account/not-found', controller: 'accountNotFound',
-            params: { email: null }, isProtected: true
-        });
+        // _state({
+        //     url: 'account/email-is-empty', controller: 'accountEmailIsEmpty',
+        //     params: { email: null }, isProtected: true
+        // });
+        // _state({
+        //     url: 'account/not-found', controller: 'accountNotFound',
+        //     params: { email: null }, isProtected: true
+        // });
 
-        _state({ url: 'brand/not-supported', controller: 'brandNotSupported' });
+        // _state({ url: 'brand/not-supported', controller: 'brandNotSupported' });
 
-        _state({ url: 'ticket/not-found', controller: 'ticketNotFound' });
-        _state({ url: 'ticket/requester-email-is-empty', controller: 'ticketRequesterEmailIsEmpty' });
+        // _state({ url: 'ticket/not-found', controller: 'ticketNotFound' });
+        // _state({ url: 'ticket/requester-email-is-empty', controller: 'ticketRequesterEmailIsEmpty' });
 
-        _state({ url: 'user/sign-in', controller: 'userSignIn' });
+        // _state({ url: 'user/sign-in', controller: 'userSignIn' });
 
-        _state({ url: 'zat/client-not-found', controller: 'zatClientNotFound' });
+        // _state({ url: 'zat/client-not-found', controller: 'zatClientNotFound' });
     });
 
 //https://github.com/modularcode/modular-admin-angularjs/blob/master/src/_main.js
