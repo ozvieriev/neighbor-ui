@@ -3,9 +3,9 @@
 
         var template = [
             '<ul class="navbar-nav">',
-            '<li class="nav-item active" data-rem="1.0"><a class="nav-link" href="#">A</a></li>',
-            '<li class="nav-item" data-rem="1.2"><a class="nav-link" href="#">A</a></li>',
-            '<li class="nav-item" data-rem="1.5"><a class="nav-link" href="#">A</a></li>',
+            '<li class="nav-item active" data-rem="1.0"><a class="nav-link">A</a></li>',
+            '<li class="nav-item" data-rem="1.2"><a class="nav-link">A</a></li>',
+            '<li class="nav-item" data-rem="1.5"><a class="nav-link">A</a></li>',
             '</ul>'
         ].join('');
 
@@ -25,7 +25,8 @@
 
                     li.css({
                         'font-size': `${rem}rem`,
-                        'line-height': '1.7rem'
+                        'line-height': '1.7rem',
+                        cursor: 'pointer'
                     });
 
                     li.find('a').bind('click', () => {
