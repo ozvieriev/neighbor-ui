@@ -12,8 +12,17 @@ angular.module('app', ['ui.router',
 
         $transitions.onBefore({ to: '**' }, (transitions) => {
 
-            // if (transitions.to().isProtected && !$auth.isAuthenticated())
-            //     return transitions.router.stateService.target('user/sign-in');
+            var to = transitions.to();
+            if (to.isProtected && !$auth.isAuthenticated()) {
+
+                var stateService = transitions.router.stateService;
+                var params = {
+                    returnUrl: to.url.replace(/^\//g, ''),
+                    locale: stateService.params.locale || 'en'
+                };
+
+                return transitions.router.stateService.target('account/sign-in', params);
+            }
         });
     })
     .config(($stateProvider, $urlRouterProvider) => {
@@ -65,8 +74,15 @@ angular.module('app', ['ui.router',
         };
 
         _state({ url: 'account/recover-password', controller: 'recoverPassword' });
-        _state({ url: 'account/sign-in', controller: 'accountSignIn' });
+        _state({ url: 'account/sign-in', controller: 'accountSignIn', params: { returnUrl: null } });
         _state({ url: 'account/sign-up', controller: 'accountSignUp' });
+
+        _state({ url: 'learning/nutrition-cancer-related-fatigue', isProtected: true });
+        _state({ url: 'learning/overview', isProtected: true });
+        _state({ url: 'learning/physical-activity-cancer-related-fatigue', isProtected: true });
+        _state({ url: 'learning/psychological-wellness-cancer-related-fatigue', isProtected: true });
+        _state({ url: 'learning/sleep-cancer-related-fatigue', isProtected: true });
+        _state({ url: 'learning/spirituality-cancer-related-fatigue', isProtected: true });
 
         _state({ url: 'about' });
         _state({ url: 'contact-us' });

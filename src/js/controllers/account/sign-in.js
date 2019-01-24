@@ -1,2 +1,8 @@
 angular.module('app.controllers')
-    .controller('accountSignInController', ['$scope', ($scope) => { }]);
+    .controller('accountSignInController', ['$scope', '$auth', ($scope, $auth) => {
+
+        $scope.signIn = () => {
+
+            $auth.signIn();
+        };
+    }]);
