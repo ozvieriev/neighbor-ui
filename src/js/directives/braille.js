@@ -1,5 +1,5 @@
 ﻿angular.module('app.directives')
-    .directive('braille', ['$window', ($window) => {
+    .directive('ngBraille', ['$window', ($window) => {
 
         var template = [
             '<ul class="navbar-nav">',

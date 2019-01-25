@@ -1,30 +1,4 @@
-angular.module('app.auth', []);
-angular.module('app.services', []);
-angular.module('app.controllers', []);
-angular.module('app.directives', []);
-angular.module('app.filters', []);
-
-angular.module('app', ['ui.router',
-    'app.auth', 'app.services', 'app.controllers', 'app.directives', 'app.filters'])
-    .run(function ($trace, $transitions, $auth) {
-
-        $trace.enable('TRANSITION');
-
-        $transitions.onBefore({ to: '**' }, (transitions) => {
-
-            var to = transitions.to();
-            if (to.isProtected && !$auth.isAuthenticated()) {
-
-                var stateService = transitions.router.stateService;
-                var params = {
-                    returnUrl: to.url.replace(/^\//g, ''),
-                    locale: stateService.params.locale || 'en'
-                };
-
-                return transitions.router.stateService.target('account/sign-in', params);
-            }
-        });
-    })
+angular.module('app')
     .config(($stateProvider, $urlRouterProvider) => {
 
         // $locationProvider.html5Mode({
@@ -41,14 +15,11 @@ angular.module('app', ['ui.router',
             abstract: true,
             views: {
                 header: {
-                    templateUrl: 'partial/header.html'
+                    templateUrl: 'partial/header.html',
+                    controller: 'partialHeaderController'
                 },
-                main: {
-                    controller: 'appController',
-                },
-                footer: {
-                    templateUrl: 'partial/footer.html'
-                }
+                main: { controller: 'appController', },
+                footer: { templateUrl: 'partial/footer.html' }
             }
         });
 
@@ -90,29 +61,6 @@ angular.module('app', ['ui.router',
         _state({ url: 'index', controller: 'index' });
         _state({ url: 'privacy' });
         _state({ url: 'resources' });
-
-        // _state({
-        //     url: 'account', controller: 'account', templateUrl: 'views/account/index.html',
-        //     params: { accountId: null }, isProtected: true
-        // });
-
-        // _state({
-        //     url: 'account/email-is-empty', controller: 'accountEmailIsEmpty',
-        //     params: { email: null }, isProtected: true
-        // });
-        // _state({
-        //     url: 'account/not-found', controller: 'accountNotFound',
-        //     params: { email: null }, isProtected: true
-        // });
-
-        // _state({ url: 'brand/not-supported', controller: 'brandNotSupported' });
-
-        // _state({ url: 'ticket/not-found', controller: 'ticketNotFound' });
-        // _state({ url: 'ticket/requester-email-is-empty', controller: 'ticketRequesterEmailIsEmpty' });
-
-        // _state({ url: 'user/sign-in', controller: 'userSignIn' });
-
-        // _state({ url: 'zat/client-not-found', controller: 'zatClientNotFound' });
     });
 
 //https://github.com/modularcode/modular-admin-angularjs/blob/master/src/_main.js

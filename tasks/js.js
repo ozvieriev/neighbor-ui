@@ -33,7 +33,9 @@ gulp.task('js:vendor', () => {
     return gulp.src([
         'node_modules/jquery/dist/jquery.slim.min.js',
         'node_modules/angular/angular.min.js',
-        'node_modules/angular-ui-router/release/angular-ui-router.min.js'
+        'node_modules/angular-ui-router/release/angular-ui-router.min.js',
+        'node_modules/angular-translate/dist/angular-translate.min.js',
+        'node_modules/angular-translate/dist/angular-translate-loader-partial/angular-translate-loader-partial.min.js'
     ])
         .pipe(concat('vendor.min.js'))
         .pipe(gulp.dest('dist/js'))
